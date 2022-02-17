@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
+        <form method="post">{% csrf_token %}
+            <p>Are you sure you want to delete {{ object }}</p>
+            {{ form }}
+            <input class="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-white hover:bg-red mt-4" type="submit" value="Confirm">
+            <a href="{% url 'shopping_items' %}" class="btn btn-default ml-4">Cancel</a>
+        </form>
+    </div>
+{% endblock %}

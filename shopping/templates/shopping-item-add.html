@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static tailwind_filters  %}
+
+{% block content %}
+    <div class="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
+        <h1 style="font-size: 2rem;" class="mb-4">
+            {{ page_title }}
+        </h1>
+        {% include "includes/basic_form.html" with form=form %}
+    </div>
+{% endblock %}

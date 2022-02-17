@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static tailwind_filters  %}
+
+{% block content %}{% endblock %}
+
+{% block sidepanel %}
+    <div class="bg-white rounded shadow p-6 m-4 w-64">
+        <h2>
+            Categories
+            <a href="{% url 'category_create' %}" class="align-middle flex-no-shrink float-right border-2 rounded">
+                Add category
+            </a>
+        </h2>
+        {% if items %}
+            <h3 class="mt-2">Item</h3>
+            <ul class="mt-2">
+                {% for item in items %}
+                    <li class="text-center">
+                        <a href="{% url 'category_detail' item.slug %}" class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">
+                            {{ item }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% if departments %}
+            <h3>Department</h3>
+            <ul class="mt-2">
+                {% for department in departments %}
+                    <li class="text-center">
+                        <a href="{% url 'category_detail' department.slug %}" class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">
+                            {{ department }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endblock %}

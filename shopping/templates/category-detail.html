@@ -1,0 +1,29 @@
+{% extends "shopping_base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
+        <h1 style="font-size: 2rem;">
+           Category
+
+           <a href="{% url 'category_delete' category.slug %}" class="flex-no-shrink ml-2 border-2 rounded hover:text-white">
+                Delete
+            </a>
+            <a href="{% url 'category_update' category.slug %}" class="flex-no-shrink ml-2 border-2 rounded  hover:text-white ">
+                Edit
+            </a>
+            <a href="{% url 'shopping_items' %}"  class="flex-no-shrink ml-2 border-2 rounded hover:text-white">Back</a>
+        </h1>
+        
+        <p class="mt-4">Name: {{ category.name }}</p>
+        <p class="mt-4">Type: {{ category.category_type }}</p>
+
+        <h2 class="mt-2 mb-2">Shopping items with this category:</h2>
+        
+        <ul class="ml-4">
+            {% for shopping_item in category.shoppingitem_set.all %}
+                <li>{{ shopping_item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

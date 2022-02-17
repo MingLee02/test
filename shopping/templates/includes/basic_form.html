@@ -1,0 +1,9 @@
+{% load static tailwind_filters  %}
+
+<form class="mt-4" method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    
+    <input type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" value="Save">
+    <a href="{% url 'shopping_items' %}" class="btn btn-default ml-4">Cancel</a>
+</form>

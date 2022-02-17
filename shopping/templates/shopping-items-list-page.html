@@ -1,0 +1,28 @@
+{% extends "shopping_base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
+        <h1 style="font-size: 2rem;">
+            Shopping list
+            <a href="{% url 'shopping_item_create' %}"  style="font-size: 1rem;" class="align-middle flex-no-shrink float-right border-2 rounded">
+                Add item
+            </a>
+        </h1>
+        <ul class="mt-4">
+            {% for item in shoppingItem %}
+                <li class="w-full text-grey-darkest">
+                    <div class="flex mb-4 items-center">
+                        <p class="w-full text-grey-darkest">{{ item }}</p>
+                        <a href="{% url 'shopping_item_update' item.slug %}" class="flex-no-shrink  ml-2 border-2 rounded text-red border-red hover:text-white hover:bg-red">
+                            Edit
+                        </a>
+                        <a href="{% url 'shopping_item_delete' item.slug %}" class="flex-no-shrink  ml-2 border-2 rounded text-red border-red hover:text-white hover:bg-red">
+                            Delete
+                        </a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
